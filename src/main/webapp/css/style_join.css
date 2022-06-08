@@ -1,0 +1,274 @@
+*{
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+    color: gray;
+    text-decoration: none;
+    font-family: 'Hahmlet', serif;
+    font-weight: 800;
+
+}
+
+body{
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    font-size: 20px;
+}
+
+#box{
+    top: 60px;
+    width: 700px;
+    height: auto;
+    position: relative;
+}
+
+.join{
+    width: 660px;
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+form{
+    margin-top: 30px;
+}
+
+.subject{
+    width: 180px;
+    height: 50px;
+    display: inline-block;
+}
+
+.subject_with{
+	float:left;
+	width: 180px;
+    height: 50px;
+    display: inline-block;
+}
+
+.content{
+    width: 500px;
+    display: inline-block;
+}
+
+input{
+    width: 450px;
+    border: rgb(204, 204, 204) 1px solid;
+    border-radius: 0.5em;
+    padding: 10px;
+    font-size: 17px;
+}
+
+input:focus, input:hover{
+    background-color: rgb(243, 243, 243);
+}
+
+select{
+    border: rgb(204, 204, 204) 1px solid;
+    border-radius: 0.5em;
+    width: 150px;
+    height: 47px;
+    text-align: center;
+    font-size: 17px;
+}
+
+.email input{
+    width: 120px;
+}
+
+.phone input{
+    width: 122px;
+}
+
+input[type="radio"]{
+    width: 30px;
+}
+
+input[type="checkbox"]{
+    width: 30px;
+}
+
+#gender:last-child{
+    margin-left: 15px;
+}
+
+#add_num{
+    width: 340px;
+}
+
+input[type="button"]{
+    width: 103px;
+}
+
+input:disabled{
+    background-color: rgb(230, 230, 230);
+}
+
+.agree_marketing{
+    width: 500px;
+    margin: 10px 0px;
+    font-size: 15px;
+}
+
+.agree{
+    width: 660px;
+    margin: 10px 0px;
+    font-size: 15px;
+}
+
+input[type="submit"]{
+    width: 325px;
+    margin-top: 10px;
+}
+
+button[type="button"]{
+    width: 325px;
+    margin-top: 10px;
+    border: rgb(204, 204, 204) 1px solid;
+    border-radius: 0.5em;
+    padding: 10px;
+    font-size: 17px;
+}
+
+textarea{
+    width: 400px;
+    height: 380px;
+}
+
+
+#layer1, #layer2{      /*�젅�씠�뼱 �뙘�뾽李� 諛곌꼍 �뒪���씪*/
+	width:100%;
+	height:100%;
+	position:absolute;
+	left:0px;
+	top:0px;
+	background:rgba(0,0,0, 0.6); 
+	z-index:11; 
+	display:none;
+}
+
+#layer1.active, #layer2.active{
+	display:block;
+}
+
+.layer_up{   /*�젅�씠�뼱 �뙘�뾽李� �뒪���씪*/
+	width:500px;
+	height:530px;
+	position:fixed;
+	left:37%; 
+	top:20%; 
+	background-color:#ffffff;
+}
+
+.uptitle{  /* 濡쒓렇�씤李� �젣紐� */
+	margin-top:40px;
+    margin-bottom: 20px;
+	text-align:center; 
+	line-height:16px; 
+	font-size:25px; 
+	font-weight:bold;
+}
+
+.upbody{
+	padding:30px;
+	text-align:center;
+	font-size:18px;
+	line-height:30px; 
+}
+
+.login_box{
+    position: relative;
+    width: 450px;
+    height: 200px;
+    float: left;
+}
+
+.user, .password{
+    position: relative;
+    margin-bottom: 10px;
+
+}
+
+.login_box label{
+    width: 130px;
+    height: 40px;
+    padding-top: 10px;
+    margin-left: 20px;
+    text-align: left;
+    float: left;
+}
+
+.login_box input{
+    width: 250px;
+    border: rgb(233, 233, 233) 3px solid;
+    border-radius: 0.5em;    
+    font-size: 20px;
+    padding: 10px;
+}
+
+
+.login_box input:focus, input:hover{
+    background-color: rgb(243, 243, 243);
+}
+
+.login{
+    cursor: pointer;
+}
+
+button{
+    width: 425px;
+    height: 50px;
+    font-size: 20px;
+    border: rgb(233, 233, 233) 3px solid;
+    border-radius: 0.5em; 
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: rgb(233, 233, 233);
+}
+
+.sns_login img{
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+.find{
+    position: relative;
+    width: 425px;
+    float: left;
+    margin-bottom: 20px;
+}
+
+.find a{
+    margin: 0;
+    display: inline-block;
+    width: 140px;
+    text-align: center;
+    font-size: 15px;
+    float:left;
+}
+
+.btn{
+	height:20px;
+	width:25px; 
+	cursor:pointer;
+	display:block;
+	text-align:center;
+    padding-bottom: 5px;
+	font-size:15px;
+	font-weight:bold;
+	background:#dddddd;
+        /* border-radius:3px; �뀒�몢由щ�� �뫁湲�寃� 留뚮뱾�뼱 紐⑥꽌由ш� �뫁洹� 踰꾪듉�쑝濡� 吏��젙�븿.
+            �겙 媛믪씪�닔濡� �썝�삎�뿉 媛�源뚯썙吏� */
+	border-radius:4px;
+	position:absolute; 
+	right:10px;
+	top:10px;
+}
+
+.btn:hover{
+	background:#cccccc;
+}

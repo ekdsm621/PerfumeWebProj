@@ -1,0 +1,405 @@
+@import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@100&family=Libre+Baskerville&display=swap');
+*{
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+    color: gray;
+    text-decoration: none;
+    font-family: 'Hahmlet', serif;
+    font-weight: 800;
+
+}
+
+a{
+    text-decoration: none;
+    color:gray;
+}
+
+body{
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    font-size: 20px;
+}
+
+#box{
+    width: 1400px;
+    height: 2000px;
+    position: relative;
+}
+
+/* header */
+#header{
+    width: 1400px;
+    height: 250px;
+    position: fixed;
+    z-index: 10;
+    background-color: white;
+    float: left;
+}
+
+/* header_top - member + logo */
+.header_top{
+    width: 100%;
+    height: 150px;
+    float: left;
+}
+
+/* logo */
+.logo{
+    width: 100%;
+    height: 100px;
+    margin-top: 60px;
+    position: absolute;
+    text-align: center;
+    font-size: 30px;
+}
+
+/* member */
+.member{
+    width: 100%;
+    height: 45px;
+    float: right;
+    position: absolute;
+    top:0px;
+    margin-top: 15px;
+    font-size: 15px;
+}
+
+.member ul li{
+    float:right;
+    margin: 15px;
+}
+
+.member>a{ /* 이미지 */
+    margin-top: 7px;
+    float: right;
+}
+
+.member ul li a:hover{
+    font-weight: bold;
+}
+
+/* navigation bar */
+.nav{
+    width: 1400px;
+    height:50px;
+    float: left;
+    position: absolute;
+    top:150px;
+    font-size: 20px;
+
+}
+
+.nav ul li a:hover{
+    font-weight: bold;
+}
+
+.nav ul li{
+    width: 233px;
+    text-align: center;
+    float: left;
+    margin-top: 30px;
+}
+
+.sub_cate{
+    font-size: 15px;
+    margin: 0;
+    background-color: white;
+    width: 100%;
+    height: 280px;
+    z-index: 10;
+    display: none;
+    border-bottom: 1px solid rgb(233, 233, 233);
+}
+
+/* content */
+#content{
+    width: 1400px;
+    height: 2500px;
+    position: relative;
+    top: 250px;
+    float: left;
+}
+
+.imgslide{
+    width: 1400px;
+    height: 500px;
+    float: left;
+}
+
+.imgslide a{
+    margin-left: 150px;
+    display: block;
+    position: absolute;
+}
+
+.main_pic{
+    width: 1395px;
+    height: 600px;
+    opacity: 80%;
+    float: left;
+    margin-bottom: 50px;
+}
+
+hr{
+    color: gray;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    width: 700px;
+    text-align: center;
+}
+
+h3{
+    text-align: center;
+}
+
+
+.new_prod{
+    margin-top: 50px;
+    width: 100%;
+    height: auto;
+    float: left;
+    text-align: center;
+}
+
+.new_prod ul{
+    width: 1400px;
+    height: auto;
+    margin:0;
+    float: center;
+}
+
+.new_prod ul li{
+    width: 350px;
+    height: 350px;
+    margin: 57px;
+    float: left;
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+.best_prod{
+    margin-top: 50px;
+    width: 100%;
+    height: auto;
+    float: left;
+    text-align: center;
+}
+
+.best_prod ul{
+    width: 1400px;
+    margin: 0;
+    height: auto;
+    float: center;
+}
+
+.best_prod ul li{
+    width: 250px;
+    height: 300px;
+    margin: 45px;
+    float: left;
+    font-size: medium;
+}
+
+.best_prod ul li img{
+    width: 250px;
+    height: 250px;
+    float: left;
+    background-color: #ffffff;
+    margin-bottom: 15px;
+}
+
+#layer{      /*레이어 팝업창 배경 스타일*/
+	width:100%;
+	height:2000px;
+	position:absolute;
+	left:0px;
+	top:0px;
+	background:rgba(0,0,0, 0.6); 
+	z-index:15; 
+	display:none;
+}
+
+#layer.active{
+	display:block;
+}
+
+.layer_up{   /*레이어 팝업창 스타일*/
+	width:500px;
+	height:530px;
+	position:fixed;
+	left:37%; 
+	top:20%; 
+	background-color:#ffffff;
+}
+
+.uptitle{  /* 로그인창 제목 */
+	margin-top:40px;
+    margin-bottom: 20px;
+	text-align:center; 
+	line-height:16px; 
+	font-size:25px; 
+	font-weight:bold;
+}
+
+.upbody{
+	padding:30px;
+	text-align:center;
+	font-size:18px;
+	line-height:30px; 
+}
+
+.login_box{
+    position: relative;
+    width: 450px;
+    height: 200px;
+    float: left;
+}
+
+.user, .password{
+    position: relative;
+    margin-bottom: 10px;
+
+}
+
+.login_box label{
+    width: 130px;
+    height: 40px;
+    padding-top: 10px;
+    margin-left: 20px;
+    text-align: left;
+    float: left;
+}
+
+.login_box input{
+    width: 250px;
+    border: rgb(233, 233, 233) 3px solid;
+    border-radius: 0.5em;    
+    font-size: 20px;
+    padding: 10px;
+}
+
+
+.login_box input:focus, input:hover{
+    background-color: rgb(243, 243, 243);
+}
+
+.login{
+    cursor: pointer;
+}
+
+button{
+    width: 425px;
+    height: 50px;
+    font-size: 20px;
+    border: rgb(233, 233, 233) 3px solid;
+    border-radius: 0.5em; 
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: rgb(233, 233, 233);
+}
+
+.sns_login img{
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+.find{
+    position: relative;
+    width: 425px;
+    float: left;
+    margin-bottom: 20px;
+}
+
+.find a{
+    margin: 0;
+    display: inline-block;
+    width: 140px;
+    text-align: center;
+    font-size: 15px;
+    float:left;
+}
+
+.btn{
+	height:20px;
+	width:25px; 
+	cursor:pointer;
+	display:block;
+	text-align:center;
+    padding-bottom: 5px;
+	font-size:15px;
+	font-weight:bold;
+	background:#dddddd;
+        /* border-radius:3px; 테두리를 둥글게 만들어 모서리가 둥근 버튼으로 지정함.
+            큰 값일수록 원형에 가까워짐 */
+	border-radius:4px;
+	position:absolute; 
+	right:10px;
+	top:10px;
+}
+
+.btn:hover{
+	background:#cccccc;
+}
+
+
+#footer{
+    width:100%;
+    height: 300px;
+    background-color: rgba(0, 0, 0, 0.08);
+    position: relative;
+    float: left;
+    bottom: 0;
+}
+
+.com_info{
+    width: 300px;
+    height: 100%;
+    font-size: 14px;
+    float: left;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 50px;
+}
+
+.com_cs{
+    width: 250px;
+    height: 100%;
+    font-size: 14px;
+    float: left;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 50px;
+}
+
+.com_bank{
+    width: 250px;
+    height: 100%;
+    font-size: 14px;
+    float: left;
+    margin-left:80px;
+    margin-right: 80px;
+    margin-top: 50px;
+}
+
+.com_add{
+    width: 200px;
+    height: 100%;
+    font-size: 14px;
+    float: left;
+    margin-left: 80px;
+    margin-right: 80px;
+    margin-top: 50px;
+}
+
+.subject{
+    display: inline-block;
+    width: 100px;
+}
+
+.info_cont{
+    display: inline-block;
+}

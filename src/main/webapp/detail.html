@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Detail</title>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="css/style_index.css" type="text/css">
+    <link rel="stylesheet" href="css/style_detail.css" type="text/css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@100&family=Libre+Baskerville&display=swap');
+        *{
+            font-family: 'Hahmlet', serif;
+        }
+    </style>
+    <script src="javascript/jquery-1.12.3.js"></script>
+    <script src="javascript/script.js" defer type="text/javascript"></script>
+</head>
+<body>
+<!-- index.html과 동일 -->
+    <!-- .box: 헤더 + 본문 -->
+    <div id="box">
+        <!-- .header: 로고 + 회원 메뉴 + 네비게이션바 -->
+        <div id="header">
+            <!-- .header_top: 로고 + 로그인 -->
+            <div class="header_top">
+                <!-- .logo: 로고 -->
+                <div class="logo">
+                    <a href="index.html">
+                        <h2>Perfumality</h2>
+                    </a>
+                </div>
+                <!-- .member: 회원 관련 메뉴 -->
+                <div class="member">
+                    <!-- .login: 누르면 로그인창 띄움 -->
+                    <a class="login"><img src="Images/member.png"></a>
+                    <ul>
+                        <li><a class="login">Login</a></li>
+                        <li><a href="join.html">Join</a></li>
+                        <li><a href="#">Cart</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- .nav: 네비게이션 -->
+            <div class="nav">
+                <ul class="main_cate">
+                    <li>
+                        <a href="maincate.html">FRAGRANCES</a>
+                        <ul class="sub_cate">
+                            <li><a href="#">ALL</a></li>
+                            <li><a href="#">BRAND</a></li>
+                            <li><a href="#">UNISEX</a></li>
+                            <li><a href="#">FOR MAN</a></li>
+                            <li><a href="#">FOR WOMAN</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">SKIN CARE</a>
+                        <ul class="sub_cate">
+                            <li><a href="#">CLEANSERS</a></li>
+                            <li><a href="#">SKIN & LOTION</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">BODY & HAND</a>
+                        <ul class="sub_cate">
+                            <li><a href="#">HAND CARE</a></li>
+                            <li><a href="#">BODY CARE</a></li>
+                            <li><a href="#">SOAP</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">HOME</a>
+                        <ul class="sub_cate">
+                            <li><a href="#">DIFFUSER</a></li>
+                            <li><a href="#">CANDLE</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">ACC</a>
+                        <ul class="sub_cate">
+                            <li><a href="#">TRAVLE KIT</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">ABOUT</a>
+                        <ul class="sub_cate">
+                            <li><a href="#">CONTACT US</a></li>
+                            <li><a href="#">EVENT</a></li>
+                            <li><a href="#" style="font-weight: bold;">시향 서비스</a></li>
+                            <li><a href="#" style="font-weight: bold;">문의 사항</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+<!-- detail.html 고유 -->
+        <!-- .content: 상품 사진 + 상품 정보(가격 등) + 상품 상세 사진 -->
+        <div id="content">
+            <div class="cont_top">
+                <!-- .imgslide: 상품 사진 -->
+                <div class="imgslide">
+                    <a><img src="Images/product_img/prod_img1.png" alt=""></a>
+                    <a><img src="Images/product_img/prod_img2.png" alt=""></a>
+                    <a><img src="Images/product_img/prod_img3.png" alt=""></a>
+                </div>
+
+                <!-- .prod_info: 상품 정보 -->
+                <div class="prod_info">
+                    <h2>딥디크 도손 오 드 뚜왈렛</h2>
+                    <hr>
+                    <table>
+                        <tr>
+                            <th>용량</th>
+                            <td>100ml</td>
+                        </tr>
+                        <tr>
+                            <th>판매가</th>
+                            <td>168,500</td>
+                        </tr>
+                        <tr>
+                            <th>배송비</th>
+                            <td>2,500</td>
+                        </tr>
+                        <tr>
+                            <th>옵션 선택 </th>
+                            <td>
+                                <select>
+                                    <option>
+                                        ---- Select Option ----
+                                    </option>
+                                    <option value="">
+                                        Option 1
+                                    </option>
+                                    <option value="">
+                                        Option 2
+                                    </option>
+                                    <option value="">
+                                        Option 3
+                                    </option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr><td></td></tr>
+                        <tr>
+                            <th>총 상품금액</th>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <hr>
+            
+            <!-- .cont_body: 상품 상세 사진 -->
+            <div class="cont_body">
+                <img src="Images/Perfume/998c9866d03e515a5789ea523db11542.jpg" alt="">
+            </div>
+        </div>
+    </div>
+
+
+<!-- index.html과 동일 -->
+    <!-- .layer: .login 누르면 뜨는 로그인창 -->
+    <div id="layer"> 
+        <div class="layer_up">
+            <div class="btn">x</div>
+            <div class="uptitle">LOGIN</div>
+            <div class="upbody">
+                <form action="#" class="login_box">
+                    <div class="user">
+                        <label for="id">User</label>
+                        <input type="text" id="id">
+                    </div>
+                    <div class="password">
+                        <label for="password">Password</label>
+                        <input type="password" id="password">
+                    </div>
+                    <button>로그인</button>
+                </form>
+                <div class="find">
+                    <a href="#">비밀번호 찾기</a>
+                    <a href="#">아이디 찾기</a>
+                    <a href="join.html">회원가입</a>
+                </div>
+                <hr style="width: 425px; border-color: rgb(231, 231, 231);">
+                <div>SNS 로그인</div>
+                <div class="sns_login">
+                    <img src="Images/sns_icon/kakaotalk.ico" alt="">
+                    <img src="Images/sns_icon/facebook.ico" alt="">
+                    <img src="Images/sns_icon/instagram.ico" alt="">
+                    <img src="Images/sns_icon/google.ico" alt="">
+                </div>
+
+            </div>
+        </div>
+    </div> 
+
+    <div id="footer">
+        <ul class="com_info">
+            <li class="subject" >company: </li>
+            <li class="info_cont">(주)Perfumality</li><br>
+            <li class="subject">owner: </li>
+            <li class="info_cont">이다은</li><br>
+            <li class="subject">tel: </li>
+            <li class="info_cont">010-0000-0000</li><br>
+            <li class="subject">business no: </li>
+            <li class="info_cont">000-00-00000</li><br>
+            <li class="subject">address: </li>
+            <li class="info_cont">경기도 양주시 고암동 00-000</li><br>
+            <li>copyright &copy; Perfumality all rights reserved <br>published by plain design</li>
+        </ul>
+
+        <ul class="com_cs">
+            <li class="subject">C/S center</li><br><br>
+            <li class="info_cont" style="font-size: 20px;">070-0000-0000</li><br><br>
+            <li class="subject">open: </li>
+            <li class="info_cont">am 10:00 - pm 17:00</li><br>
+            <li class="subject">break:</li>
+            <li class="info_cont">pm 12:00 - pm 13:00</li><br>
+            <li>(sat/sun/holiday OFF)</li>
+        </ul>
+
+        <ul class="com_bank">
+            <li class="subject">bank account</li><br><br>
+            <li class="subject">기업</li>
+            <li class="info_cont">000-000000-00-0000</li><br>
+            <li class="subject">예금주: </li>
+            <li class="info_cont">(주)Perfumality</li><br>
+        </ul>
+
+        <ul class="com_add">
+            <li class="subject">[교환/반품 주소]</li><br><br>
+            <li class="subject">경기도 양주시 고암동 00-000</li><br>
+            <li class="subject">* 공지사항 및 이용안내를 참고하여 지정택배사로 반품 요청해 주세요</li>
+        </ul>
+    </div>  
+</body>
+</html>

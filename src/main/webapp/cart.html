@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>cart</title>
+    <link href="css/style_index.css" type="text/css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@100&family=Libre+Baskerville&display=swap');
+        *{
+            font-family: 'Hahmlet', serif;
+        }
+    </style>
+    <style>
+        </style>
+        <script src="javascript/jquery-1.12.3.js"></script>
+        <script src="javascript/script.js" defer type="text/javascript"></script>
+</head>
+<body>
+    <!-- .box: 헤더 + 본문 -->
+    <div id="box">
+        <!-- .header: 로고 + 회원 메뉴 + 네비게이션바 -->
+        <div id="header">
+            <!-- .header_top: 로고 + 로그인 -->
+            <div class="header_top">
+                <!-- .logo: 로고 -->
+                <div class="logo">
+                    <a href="#">
+                        <h2>Perfumality</h2>
+                    </a>
+                </div>
+                <!-- .member: 회원 관련 메뉴 -->
+                <div class="member">
+                    <!-- .login: 누르면 로그인창 띄움 -->
+                    <a class="login"><img src="Images/member.png"></a>
+                    <ul>
+                        <li><a class="login">Login</a></li>
+                        <li><a href="join.html">Join</a></li>
+                        <li><a href="#">Cart</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- .nav: 네비게이션 -->
+            <div class="nav">
+                <ul class="main_cate">
+                    <li>
+                        <a href="maincate.html">FRAGRANCES</a>
+                        <ul class="sub_cate">
+                            <li><a href="#">ALL</a></li>
+                            <li><a href="#">BRAND</a></li>
+                            <li><a href="#">UNISEX</a></li>
+                            <li><a href="#">FOR MAN</a></li>
+                            <li><a href="#">FOR WOMAN</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">SKIN CARE</a>
+                        <ul class="sub_cate">
+                            <li><a href="#">CLEANSERS</a></li>
+                            <li><a href="#">SKIN & LOTION</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">BODY & HAND</a>
+                        <ul class="sub_cate">
+                            <li><a href="#">HAND CARE</a></li>
+                            <li><a href="#">BODY CARE</a></li>
+                            <li><a href="#">SOAP</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">HOME</a>
+                        <ul class="sub_cate">
+                            <li><a href="#">DIFFUSER</a></li>
+                            <li><a href="#">CANDLE</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">ACC</a>
+                        <ul class="sub_cate">
+                            <li><a href="#">TRAVLE KIT</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">ABOUT</a>
+                        <ul class="sub_cate">
+                            <li><a href="#">CONTACT US</a></li>
+                            <li><a href="#">EVENT</a></li>
+                            <li><a href="#" style="font-weight: bold;">시향 서비스</a></li>
+                            <li><a href="#" style="font-weight: bold;">문의 사항</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- cart.html 고유 -->
+    <div class="content">
+        
+    </div>
+
+        <!-- index.html과 동일 -->
+    <!-- .layer: .login 누르면 뜨는 로그인창 -->
+    <div id="layer"> 
+        <div class="layer_up">
+            <div class="btn">x</div>
+            <div class="uptitle">LOGIN</div>
+            <div class="upbody">
+                <form action="#" class="login_box">
+                    <div class="user">
+                        <label for="id">User</label>
+                        <input type="text" id="id">
+                    </div>
+                    <div class="password">
+                        <label for="password">Password</label>
+                        <input type="password" id="password">
+                    </div>
+                    <button>로그인</button>
+                </form>
+                <div class="find">
+                    <a href="#">비밀번호 찾기</a>
+                    <a href="#">아이디 찾기</a>
+                    <a href="join.html">회원가입</a>
+                </div>
+                <hr style="width: 425px; border-color: rgb(231, 231, 231);">
+                <div>SNS 로그인</div>
+                <div class="sns_login">
+                    <img src="Images/sns_icon/kakaotalk.ico" alt="">
+                    <img src="Images/sns_icon/facebook.ico" alt="">
+                    <img src="Images/sns_icon/instagram.ico" alt="">
+                    <img src="Images/sns_icon/google.ico" alt="">
+                </div>
+
+            </div>
+        </div>
+    </div> 
+
+    <div id="footer">
+        푸터
+    </div>        
+    </div>
+</body>
+</html>
