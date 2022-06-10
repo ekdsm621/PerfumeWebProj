@@ -8,42 +8,120 @@
     <link rel="stylesheet" href="css/style_join.css" type="text/css">
     <%@ include file="include_common/setting.jsp" %>
     <script src="javascript/script_join.js" defer type="text/javascript"></script>
+    <script type="text/javascript">
+	    function validateForm (form){
+	    	if (form.id.value=="" || form.id.value.length==0 ) {
+	    		alert ("아이디를 입력하세요");
+	    		form.id.focus();
+	    		return false;    		
+	    	}
+	    	if (form.pw.value=="" || form.pw.value.length==0 ) {
+	    		alert ("패스워드를 입력하세요");
+	    		form.pw.focus();
+	    		return false;    		
+	    	}
+	    	if (form.checkpw.value=="" || form.checkpw.value.length==0 ) {
+	    		alert ("패스워드를 재입력하세요");
+	    		form.checkpw.focus();
+	    		return false;    		
+	    	}
+	    	if (form.checkpw.value != form.pw.value) {
+	    		alert ("패스워드가 일치하지 않습니다");
+	    		form.checkpw.focus();
+	    		return false;    		
+	    	}
+	    	if (form.name.value=="" || form.name.value.length==0 ) {
+	    		alert ("이름을 입력하세요");
+	    		form.name.focus();
+	    		return false;    		
+	    	}
+	    	if (form.birth.value=="" || form.birth.value.length==0 ) {
+	    		alert ("생년월일을 입력하세요");
+	    		form.birth.focus();
+	    		return false;    		
+	    	}
+	    	if (form.gender.checked==false) {
+	    		alert ("성별을 체크하세요");
+	    		form.gender.focus();
+	    		return false;    		
+	    	}
+	    	if (form.email.value=="" || form.email.value.length==0 ) {
+	    		alert ("이메일을 입력하세요");
+	    		form.email.focus();
+	    		return false;    		
+	    	}
+	    	if (form.email_behind.value=="" || form.email_behind.value.length==0 ) {
+	    		alert ("이메일을 입력하세요");
+	    		form.email_behind.focus();
+	    		return false;    		
+	    	}
+	    	if (form.number_second.value=="" || form.number_second.value.length==0 ) {
+	    		alert ("전화번호를 입력하세요");
+	    		form.number_second.focus();
+	    		return false;    		
+	    	}
+	    	if (form.number_third.value=="" || form.number_third.value.length==0 ) {
+	    		alert ("전화번호를 입력하세요");
+	    		form.number_third.focus();
+	    		return false;    		
+	    	}
+	    	if (form.post.value=="" || form.post.value.length==0 ) {
+	    		alert ("우편번호를 입력하세요");
+	    		form.post.focus();
+	    		return false;    		
+	    	}
+	    	if (form.address.value=="" || form.address.value.length==0 ) {
+	    		alert ("주소를 입력하세요");
+	    		form.address.focus();
+	    		return false;    		
+	    	}
+	    	if (form.agree1.checked==false) {
+	    		alert ("Perfumality 이용약관 동의를 체크해주세요");
+	    		return false;    		
+	    	}
+	    	if (form.agree2.checked==false) {
+	    		alert ("개인정보 수집 및 이용 동의를 체크해주세요");
+	    		return false;    		
+	    	}
+	    }
+    </script>
 </head>
 <body>
  <div id="box">
         <div class="join">회원가입</div>
         <hr style="width: 660px; margin-right: 110px; color: rgb(204, 204, 204);">
-        <form action="/join.do">
+        <form id="joinForm" action="/join.do" method="post" onsubmit="return validateForm(this)">
             <label for="id" class="subject">아이디</label>
             <div class="content">
-                <input type="text" id="id">
+                <input type="text" id="id" name="id">
+                <input type="button" value="중복확인" id="checkId">
             </div>
             <label for="pw" class="subject">비밀번호</label>
             <div class="content">
-                <input type="password" id="pw">
+                <input type="password" id="pw" name="pw">
             </div>
             <label for="checkpw" class="subject">비밀번호 재확인</label>
             <div class="content">
-                <input type="password" id="checkpw">
+                <input type="password" id="checkpw" name="checkpw">
             </div>
             <label for="name" class="subject">이름</label>
             <div class="content">
-                <input type="text" id="name">
+                <input type="text" id="name" name="name">
             </div>
             <label for="birth" class="subject">생년월일</label>
             <div class="content">
-                <input type="date" id="birth">
+                <input type="date" id="birth" name="birth">
             </div>
             <label for="gender" class="subject">성별</label>
             <div class="content">
-                <input type="radio" name="gender" id="gender" value="남">남
-                <input type="radio" name="gender" id="gender" valye="여">여
+                <input type="radio" name="gender" id="gender" value="남" checked>남
+                <input type="radio" name="gender" id="gender" value="여">여
             </div>
-            <label for="email" class="subject_with">이메일</label>
+            <label for="email_id" class="subject_with">이메일</label>
             <div class="content email">
-                <input type="text" id="email" name="email"> @
-                <input type="self">
-                <select name="email_behind" id="email_behind">
+                <input type="text" id="email_id" name="email"> @
+                <input type="text" name="email_behind">
+                <select name="" id="email_behind_sel">
                     <option class="self" value="">직접입력</option>
                     <option value="naver.com">naver.com</option>
                     <option value="hanmail.com">hanmail.com</option>
@@ -74,7 +152,7 @@
             </div>
             <label for="add_num" class="subject">우편번호</label>
             <div class="content">
-                <input type="text" name="post" id="add_num" disabled>
+                <input type="text" name="post" id="add_num">
                 <input type="button" value="검색">
             </div>
             <label class="subject">상세주소</label>
@@ -93,9 +171,9 @@
                     개인정보 수집 및 이용 동의(필수)
                 </div>
             </div>
-            <input type="submit" value="회원가입">
-            <a href="index.html" class="home">
-                <button type="button" value="뒤로">뒤로</button>
+            <input type="submit" value="회원가입" id="submit">
+            <a href="/index.jsp" class="home">
+                <button type="button" value="홈으로">홈으로</button>
             </a>
         </form>
     </div>

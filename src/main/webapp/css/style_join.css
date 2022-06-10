@@ -59,6 +59,10 @@ input{
     font-size: 17px;
 }
 
+.content #id{
+	width:340px;
+}
+
 input:focus, input:hover{
     background-color: rgb(243, 243, 243);
 }
