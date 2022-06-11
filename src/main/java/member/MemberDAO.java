@@ -4,8 +4,9 @@ import common.DBConnPool;
 
 public class MemberDAO extends DBConnPool{
 	
-	private final String insertMem = "INSERT INTO MEMBER VALUES(mem_seq.nextval, ?,?,?,?,?,?,?,?,?,?,?,?)";
+	private final String insertMem = "INSERT INTO MEMBER VALUES((SELECT NVL(MAX(MEMBER_CODE),0)+1 FROM MEMBER), ?,?,?,?,?,?,?,?,?,?,?,?)";
 	private final String confirmId = "SELECT MEMBER_ID FROM MEMBER WHERE MEMBER_ID = ?";
+	private final String getMem = "SELECT * FROM MEMBER WHERE MEMBER_ID = ? AND MEMBER_PW=?";
 	public void insertMember(MemberDTO dto) {
 		try {
 			pstmt = conn.prepareStatement(insertMem);
@@ -44,6 +45,35 @@ public class MemberDAO extends DBConnPool{
 		}
 		
 		return check;
+	}
+
+	public MemberDTO getMember(MemberDTO dto) {
+		// id pw일치하면 user 돌려줌
+		MemberDTO user = null;
+		try {
+			pstmt = conn.prepareStatement(getMem);
+			pstmt.setString(1, dto.getId());
+			pstmt.setString(2, dto.getPw());
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				user = new MemberDTO();
+				user.setId(rs.getString("member_id"));
+				user.setPw(rs.getString("member_pw"));
+				user.setName(rs.getString("member_name"));
+				user.setBirth(rs.getString("member_birth"));
+				user.setGender(rs.getString("member_gender"));
+				user.setPhone(rs.getString("member_phone"));
+				user.setPhone_agree(rs.getInt("member_phone_agree"));
+				user.setEmail(rs.getString("member_email"));
+				user.setEmail_agree(rs.getInt("member_email_agree"));
+				user.setAddress(rs.getString("member_address"));
+				user.setGrade(rs.getInt("member_grade"));
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return user;
 	}
 	
 }

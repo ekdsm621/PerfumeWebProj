@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <div id="header">
 	<!-- .header_top: 로고 + 로그인 -->
 	<div class="header_top">
@@ -12,8 +14,14 @@
 			<!-- .login: 누르면 로그인창 띄움 -->
 			<a class="login"><img src="Images/member.png"></a>
 			<ul>
+				
+				<%if(session.getAttribute("id") != null){%>
+				<li><a href="/logout.do">Logout</a></li>
+				<%}else{%>
 				<li><a class="login">Login</a></li>
-				<li><a href="join.html">Join</a></li>
+				<%} %>
+				
+				<li><a href="join.jsp">Join</a></li>
 				<li><a href="#">Cart</a></li>
 			</ul>
 		</div>
