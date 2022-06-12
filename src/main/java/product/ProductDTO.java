@@ -37,6 +37,7 @@ public class ProductDTO {
 	public void setCate(String cate) {
 		this.cate = cate;
 	}
+
 	public int getPrice() {
 		return price;
 	}

@@ -4,15 +4,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <title>Index</title>
-<link href="css/style_index.css" type="text/css" rel="stylesheet">
 <%@ include file="include_common/setting.jsp"%>
 </head>
 <body>
     <!-- .box: 헤더 + 본문 -->
     <div id="box">
-    
         <!-- .header: 로고 + 회원 메뉴 + 네비게이션바 -->
 		<%@ include file="include_common/header.jsp"%>
         <!-- .content : 메인 사진 + 신상품 + 베스트상품 -->

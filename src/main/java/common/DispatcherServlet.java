@@ -3,6 +3,7 @@ package common;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import category.CategoryDAO;
+import category.CategoryDTO;
 import member.MemberDAO;
 import member.MemberDTO;
 import product.ProductDAO;
@@ -31,6 +34,12 @@ public class DispatcherServlet extends HttpServlet{
 		String path = uri.substring(uri.lastIndexOf("/"));
 		System.out.println(path);
 		
+		// 네비게이션 카테고리 던지기
+		CategoryDAO cateDao = new CategoryDAO();
+		Map<String, List<String>> allCate = cateDao.getAllCategory();
+		request.setAttribute("allCate", allCate);
+		System.out.println(allCate.entrySet());
+		
 		if(path.equals("/index.do")) {
 			// 인덱스 페이지에 필요한 데이터 실어서 index.jsp로 보내기
 			System.out.println("인덱스 페이지");
@@ -39,11 +48,27 @@ public class DispatcherServlet extends HttpServlet{
 			ProductDAO dao = new ProductDAO();
 			newProducts = dao.getNewProducts();
 			bestProducts = dao.getBestProducts();
-			System.out.println("객체 가져오기 성공");
 			request.setAttribute("newProducts", newProducts);
 			request.setAttribute("bestProducts", bestProducts);
-			System.out.println("객체 요청에 등록 성공");
 			request.getRequestDispatcher("/index.jsp").forward(request,response);
+			
+		}else if(path.equals("/maincate.do")) {
+			// 카테고리별 상품 가져와서 넘겨주기
+			System.out.println("카테고리별 상품 넘겨주기");
+			List<ProductDTO> products = new ArrayList<ProductDTO>();
+			String maincate = request.getParameter("maincate");
+			String subcate = request.getParameter("subcate");
+			String page = request.getParameter("page");
+			String pagegroup = request.getParameter("pagegroup");
+			ProductDAO dao = new ProductDAO();
+			products = dao.getCateProducts(maincate, subcate, page, pagegroup);
+			request.setAttribute("products", products);
+			
+			// 페이징처리 위한 값 넘겨주기
+			Map<String,Integer> paging = Paging.getPaging(dao.totalCateProducts(maincate, subcate), page, pagegroup);
+			request.setAttribute("paging", paging);
+		
+			request.getRequestDispatcher("/maincate.jsp").forward(request,response);
 			
 		}else if(path.equals("/login.do")) {
 			// 로그인 처리

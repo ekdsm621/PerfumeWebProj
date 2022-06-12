@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div id="header">
 	<!-- .header_top: 로고 + 로그인 -->
 	<div class="header_top">
@@ -28,15 +29,16 @@
 	</div>
 	<!-- .nav: 네비게이션 -->
 	<div class="nav">
-		<ul class="main_cate">
-			<li><a href="maincate.html">FRAGRANCES</a>
+		<ul class="main_cate">			
+			<c:forEach var="main" items="${allCate }">
+			<li><a href="maincate.do?maincate=${main.key }">${main.key }</a>
 				<ul class="sub_cate">
-					<li><a href="#">ALL</a></li>
-					<li><a href="#">BRAND</a></li>
-					<li><a href="#">UNISEX</a></li>
-					<li><a href="#">FOR MAN</a></li>
-					<li><a href="#">FOR WOMAN</a></li>
-				</ul></li>
+					<c:forEach var="sub" items="${main.value }">
+					<li><a href="#">${sub }</a></li>
+					</c:forEach>
+				</ul>
+			</li>
+			</c:forEach>
 			<li><a href="#">SKIN CARE</a>
 				<ul class="sub_cate">
 					<li><a href="#">CLEANSERS</a></li>

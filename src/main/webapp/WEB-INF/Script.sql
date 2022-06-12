@@ -76,3 +76,75 @@ values((select nvl(max(product_id),0)+1 from product),'어벤투스 포 허 EDP','CREE
 insert into product(product_id,product_name,product_brand,product_cate,product_price,product_main_img,product_best)
 values((select nvl(max(product_id),0)+1 from product),'어나더 13','LELABO',
 'fragrances',220300,'Images/Perfume/LELABO 르라보 어나더 13.jpg',1);
+
+-- 메인 카테고리 테이블
+create table main_category(
+    cate_id number(4) primary key,
+    cate_name varchar2(50) not null
+);
+
+insert into main_category(cate_id, cate_name)
+values((select nvl(max(cate_id),0)+1 from main_category),'FRAGRANCES');
+
+insert into main_category
+values((select nvl(max(cate_id),0)+1 from main_category),'SKIN CARE');
+
+insert into main_category
+values((select nvl(max(cate_id),0)+1 from main_category),'BODY & HAND');
+
+insert into main_category
+values((select nvl(max(cate_id),0)+1 from main_category),'HOME');
+
+insert into main_category
+values((select nvl(max(cate_id),0)+1 from main_category),'ACC');
+
+insert into main_category
+values((select nvl(max(cate_id),0)+1 from main_category),'ABOUT');
+
+-- 서브 카테고리 테이블
+create table sub_category(
+    cate_id number(4) primary key,
+    cate_name varchar2(50) not null,
+    main_cate_id number(4),
+    constraint fk_sub_main_id foreign key(main_cate_id) references main_category(cate_id) on delete cascade
+);
+
+insert into sub_category
+values((select nvl(max(cate_id),0)+1 from sub_category),'ALL',1);
+insert into sub_category
+values((select nvl(max(cate_id),0)+1 from sub_category),'BRAND',1);
+insert into sub_category
+values((select nvl(max(cate_id),0)+1 from sub_category),'UNISEX',1);
+insert into sub_category
+values((select nvl(max(cate_id),0)+1 from sub_category),'FOR MAN',1);
+insert into sub_category
+values((select nvl(max(cate_id),0)+1 from sub_category),'FOR WOMAN',1);
+
+insert into sub_category
+values((select nvl(max(cate_id),0)+1 from sub_category),'CLEANSERS',2);
+insert into sub_category
+values((select nvl(max(cate_id),0)+1 from sub_category),'SKIN & LOTION',2);
+
+insert into sub_category
+values((select nvl(max(cate_id),0)+1 from sub_category),'HAND CARE',3);
+insert into sub_category
+values((select nvl(max(cate_id),0)+1 from sub_category),'BODY CARE',3);
+insert into sub_category
+values((select nvl(max(cate_id),0)+1 from sub_category),'SOAP',3);
+
+insert into sub_category
+values((select nvl(max(cate_id),0)+1 from sub_category),'DIFFUSER',4);
+insert into sub_category
+values((select nvl(max(cate_id),0)+1 from sub_category),'CANDLE',4);
+
+insert into sub_category
+values((select nvl(max(cate_id),0)+1 from sub_category),'TRAVLE KIT',5);
+
+insert into sub_category
+values((select nvl(max(cate_id),0)+1 from sub_category),'CONTACT US',6);
+insert into sub_category
+values((select nvl(max(cate_id),0)+1 from sub_category),'EVENT',6);
+insert into sub_category
+values((select nvl(max(cate_id),0)+1 from sub_category),'시향 서비스',6);
+insert into sub_category
+values((select nvl(max(cate_id),0)+1 from sub_category),'문의 사항',6);
