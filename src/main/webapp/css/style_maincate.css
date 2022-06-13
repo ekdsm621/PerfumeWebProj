@@ -50,7 +50,7 @@ hr{
     height: auto;
     float: left;
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 60px;
 }
 
 .prod_list ul{
@@ -77,5 +77,10 @@ hr{
 }
 
 .paging{
-	align: center;
+	text-align: center;
+}
+
+.currPage{
+	color:black;
+	font-size: 25px;
 }

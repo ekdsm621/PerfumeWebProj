@@ -5,7 +5,9 @@
 		<div class="btn">x</div>
 		<div class="uptitle">LOGIN</div>
 		<div class="upbody">
-			<form action="/login.do" class="login_box" method="post">
+			
+			<%String from = request.getRequestURI(); %>
+			<form action="/login.do?from=<%=from %>" class="login_box" method="post">
 				<div class="user">
 					<label for="id">User</label>
 					<input type="text" id="id" name="id">
@@ -22,10 +24,10 @@
 			<hr style="width: 425px; border-color: rgb(231, 231, 231);">
 			<div>SNS 로그인</div>
 			<div class="sns_login">
-				<img src="Images/sns_icon/kakaotalk.ico" alt=""> <img
-					src="Images/sns_icon/facebook.ico" alt=""> <img
-					src="Images/sns_icon/instagram.ico" alt=""> <img
-					src="Images/sns_icon/google.ico" alt="">
+				<img src="Images/sns_icon/kakaotalk.ico" alt=""> 
+				<img src="Images/sns_icon/facebook.ico" alt="">
+				<img src="Images/sns_icon/instagram.ico" alt="">
+				<img src="Images/sns_icon/google.ico" alt="">
 			</div>
 		</div>
 	</div>

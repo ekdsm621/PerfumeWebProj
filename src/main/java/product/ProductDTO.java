@@ -10,6 +10,7 @@ public class ProductDTO {
 	private String sub_img_f;
 	private String sub_img_s;
 	private String sub_img_t;
+	private String detail_img;
 	private int prod_new;
 	private int prod_best;
 	
@@ -73,6 +74,13 @@ public class ProductDTO {
 	}
 	public void setProd_new(int prod_new) {
 		this.prod_new = prod_new;
+	}
+	
+	public String getDetail_img() {
+		return detail_img;
+	}
+	public void setDetail_img(String detail_img) {
+		this.detail_img = detail_img;
 	}
 	public int getProd_best() {
 		return prod_best;

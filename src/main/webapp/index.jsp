@@ -22,8 +22,8 @@
                 <hr>
                 <ul>
                 	<c:forEach var="newProd" items="${newProducts }" >
-	                    <li><a href="detail.html"><img src="${newProd.main_img }" alt=""></a>
-	                        <a href="">${newProd.brand }<br>${newProd.name }</a></li>                	
+	                    <li><a href="/detail.do?id=${newProd.id }"><img src="${newProd.main_img }" alt=""></a>
+	                        <a href="/detail.do?id=${newProd.id }">${newProd.brand }<br>${newProd.name }</a></li>                	
                 	</c:forEach>
                 </ul>
             </div>
@@ -33,8 +33,8 @@
                 <hr>
                 <ul>
                 	<c:forEach var="bestProd" items="${bestProducts }" >
-	                    <li><a href="detail.html"><img src="${bestProd.main_img }" alt=""></a>
-	                        <a href="">${bestProd.brand }<br>${bestProd.name }</a></li>                	
+	                    <li><a href="/detail.do?id=${bestProd.id }"><img src="${bestProd.main_img }" alt=""></a>
+	                        <a href="/detail.do?id=${bestProd.id }">${bestProd.brand }<br>${bestProd.name }</a></li>                	
                 	</c:forEach>
                 </ul>
             </div>

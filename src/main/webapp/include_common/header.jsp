@@ -6,7 +6,7 @@
 	<div class="header_top">
 		<!-- .logo: 로고 -->
 		<div class="logo">
-			<a href="#">
+			<a href="/index.do">
 				<h2>Perfumality</h2>
 			</a>
 		</div>
@@ -16,14 +16,15 @@
 			<a class="login"><img src="Images/member.png"></a>
 			<ul>
 				
-				<%if(session.getAttribute("id") != null){%>
-				<li><a href="/logout.do">Logout</a></li>
+				<%if(session.getAttribute("id") != null){
+				String from = request.getRequestURI();%>
+				<li><a href="/logout.do?from=<%=from %>">Logout</a></li>
 				<%}else{%>
 				<li><a class="login">Login</a></li>
 				<%} %>
 				
 				<li><a href="join.jsp">Join</a></li>
-				<li><a href="#">Cart</a></li>
+				<li><a href="/cart.do">Cart</a></li>
 			</ul>
 		</div>
 	</div>
@@ -39,33 +40,6 @@
 				</ul>
 			</li>
 			</c:forEach>
-			<li><a href="#">SKIN CARE</a>
-				<ul class="sub_cate">
-					<li><a href="#">CLEANSERS</a></li>
-					<li><a href="#">SKIN & LOTION</a></li>
-				</ul></li>
-			<li><a href="#">BODY & HAND</a>
-				<ul class="sub_cate">
-					<li><a href="#">HAND CARE</a></li>
-					<li><a href="#">BODY CARE</a></li>
-					<li><a href="#">SOAP</a></li>
-				</ul></li>
-			<li><a href="#">HOME</a>
-				<ul class="sub_cate">
-					<li><a href="#">DIFFUSER</a></li>
-					<li><a href="#">CANDLE</a></li>
-				</ul></li>
-			<li><a href="#">ACC</a>
-				<ul class="sub_cate">
-					<li><a href="#">TRAVLE KIT</a></li>
-				</ul></li>
-			<li><a href="#">ABOUT</a>
-				<ul class="sub_cate">
-					<li><a href="#">CONTACT US</a></li>
-					<li><a href="#">EVENT</a></li>
-					<li><a href="#" style="font-weight: bold;">시향 서비스</a></li>
-					<li><a href="#" style="font-weight: bold;">문의 사항</a></li>
-				</ul></li>
 		</ul>
 	</div>
 </div>

@@ -23,12 +23,10 @@ create table product (
     product_cate varchar2(50) not null,
     product_price number not null,
     product_main_img varchar2(300) not null,
-    product_sub_img_f varchar2(300) null,
-    product_sub_img_s varchar2(300) null,
-    product_sub_img_t varchar2(300) null,
     product_new number(1) null,
     product_best number(1) null
 );
+
 -- 상품 입력 데이터
 -- new
 insert into product(product_id,product_name,product_brand,product_cate,product_price,product_main_img,product_new)
@@ -148,3 +146,17 @@ insert into sub_category
 values((select nvl(max(cate_id),0)+1 from sub_category),'시향 서비스',6);
 insert into sub_category
 values((select nvl(max(cate_id),0)+1 from sub_category),'문의 사항',6);
+
+
+-- 상품 디테일 테이블
+create table product_detail(
+    product_id number(4) not null primary key,
+    product_sub_img_f varchar2(300) not null,
+    product_sub_img_s varchar2(300) not null,
+    product_sub_img_t varchar2(300) not null,
+    product_detail_img varchar2(300) not null,
+     constraint fk_detail_prod_id foreign key(product_id) references product(product_id) on delete cascade
+);
+
+insert into product_detail(product_id,product_sub_img_f,product_sub_img_s,product_sub_img_t,product_detail_img)
+values(6, 'Images/product_img/sub/prod_img1.png','Images/product_img/sub/prod_img2.png','Images/product_img/sub/prod_img3.png', 'Images/product_img/detail/998c9866d03e515a5789ea523db11542.jpg');

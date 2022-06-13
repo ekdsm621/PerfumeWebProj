@@ -10,14 +10,14 @@
              <c:forEach begin="${paging.firstPageOfGroup }" end="${paging.endPageOfGroup }" var="i"> 
 				<c:choose>  
 					<c:when test="${paging.page eq i}"> 
-	    				<strong>${i}</strong>
+	    				<a class="currPage">${i}</a>
 					</c:when> 
 					<c:otherwise>
 	    				<a href="/maincate.do?maincate=fragrances&page=${i}">${i}</a>
 					</c:otherwise> 
 				</c:choose>
  			</c:forEach>
- 			&nbsp;&nbsp;
+ 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
              <a href="/maincate.do?maincate=fragrances&page=${paging.nextPage}">&gt;</a>
  			&nbsp;&nbsp;
              <a href="/maincate.do?maincate=fragrances&page=${paging.nextPageGroup}">&gt;&gt;</a>

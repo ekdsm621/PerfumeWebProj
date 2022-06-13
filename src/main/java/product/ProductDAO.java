@@ -1,5 +1,6 @@
 package product;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -10,8 +11,9 @@ import common.Paging;
 public class ProductDAO extends DBConnPool{
 	private final String getNewProd = "SELECT * FROM PRODUCT WHERE PRODUCT_NEW = 1";
 	private final String getBestProd = "SELECT * FROM PRODUCT WHERE PRODUCT_BEST = 1";
-	private final String getCateProd = "SELECT * FROM (SELECT ROWNUM RNUM, P.* FROM PRODUCT P WHERE PRODUCT_CATE = ?) WHERE RNUM BETWEEN ? AND ?";
-	private final String totalCateProd = "SELECT COUNT(*) FROM PRODUCT WHERE PRODUCT_CATE = ?";
+	private final String getCateProd = "SELECT * FROM (SELECT ROWNUM RNUM, P.* FROM PRODUCT P WHERE PRODUCT_CATE = LOWER(?)) WHERE RNUM BETWEEN ? AND ?";
+	private final String totalCateProd = "SELECT COUNT(*) FROM PRODUCT WHERE PRODUCT_CATE = LOWER(?)";
+	private final String getProdDetail = "select p.product_id id, p.product_name name ,p.product_price price, d.product_sub_img_f img_f, d.product_sub_img_s img_s, d.product_sub_img_t img_t, d.product_detail_img detail from product p inner join product_detail d on p.product_id = d.product_id where p.product_id = ?";
 	
 	public List<ProductDTO> getNewProducts(){
 		// 신상품 가져오는 메서드
@@ -32,7 +34,6 @@ public class ProductDAO extends DBConnPool{
 				product.setSub_img_t(rs.getString("product_sub_img_t"));
 				product.setProd_new(rs.getInt("product_new"));
 				product.setProd_best(rs.getInt("product_best"));
-				System.out.println("객체 하나 가져옴");
 				products.add(product);
 			}
 		}catch(Exception e) {
@@ -114,5 +115,29 @@ public class ProductDAO extends DBConnPool{
 			e.printStackTrace();
 		}
 		return products;
+	}
+	
+	public ProductDTO getProdDetail(int id) {
+		ProductDTO dto = null;
+		try {
+			pstmt = conn.prepareStatement(getProdDetail);
+			pstmt.setInt(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				System.out.println("완료");
+				dto = new ProductDTO();
+				dto.setId(rs.getInt("id"));
+				dto.setName(rs.getString("name"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setSub_img_f(rs.getNString("img_f"));
+				dto.setSub_img_s(rs.getNString("img_s"));
+				dto.setSub_img_t(rs.getNString("img_t"));
+				dto.setDetail_img(rs.getString("detail"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return dto;
 	}
 }

@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Join</title>
-    <link rel="stylesheet" href="css/style_join.css" type="text/css">
     <%@ include file="include_common/setting.jsp" %>
+    <link rel="stylesheet" href="css/style_join.css" type="text/css">
     <script src="javascript/script_join.js" defer type="text/javascript"></script>
     <script type="text/javascript">
 	    function validateForm (form){
@@ -172,7 +172,7 @@
                 </div>
             </div>
             <input type="submit" value="회원가입" id="submit">
-            <a href="/index.jsp" class="home">
+            <a href="/index.do" class="home">
                 <button type="button" value="홈으로">홈으로</button>
             </a>
         </form>

@@ -66,7 +66,7 @@ select:hover{
     background-color: rgb(246, 246, 246);
 }
 
-/* 본문 내용 (제품 상세 설명) */
+/* 蹂몃Ц �궡�슜 (�젣�뭹 �긽�꽭 �꽕紐�) */
 .cont_body{
     width: 950px;
     height: 1500px;
@@ -75,6 +75,14 @@ select:hover{
 
 .cont_body img{
     width: 950px;
+}
+
+button{
+	width:230px;
+}
+
+hr{
+	width:880px;
 }
 
 #footer{

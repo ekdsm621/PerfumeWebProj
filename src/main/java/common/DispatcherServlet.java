@@ -32,13 +32,11 @@ public class DispatcherServlet extends HttpServlet{
 	private void process(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
 		String uri = request.getRequestURI();
 		String path = uri.substring(uri.lastIndexOf("/"));
-		System.out.println(path);
 		
 		// 네비게이션 카테고리 던지기
 		CategoryDAO cateDao = new CategoryDAO();
 		Map<String, List<String>> allCate = cateDao.getAllCategory();
 		request.setAttribute("allCate", allCate);
-		System.out.println(allCate.entrySet());
 		
 		if(path.equals("/index.do")) {
 			// 인덱스 페이지에 필요한 데이터 실어서 index.jsp로 보내기
@@ -57,6 +55,9 @@ public class DispatcherServlet extends HttpServlet{
 			System.out.println("카테고리별 상품 넘겨주기");
 			List<ProductDTO> products = new ArrayList<ProductDTO>();
 			String maincate = request.getParameter("maincate");
+			if(maincate == null) {
+				maincate = "FRAGRANCES";
+			}
 			String subcate = request.getParameter("subcate");
 			String page = request.getParameter("page");
 			String pagegroup = request.getParameter("pagegroup");
@@ -72,6 +73,8 @@ public class DispatcherServlet extends HttpServlet{
 			
 		}else if(path.equals("/login.do")) {
 			// 로그인 처리
+			String from = request.getParameter("from");
+			from = from.substring(0,from.lastIndexOf("."))+".do";
 			System.out.println("로그인 처리");
 			MemberDTO dto = new MemberDTO();
 			MemberDAO dao = new MemberDAO();
@@ -82,16 +85,17 @@ public class DispatcherServlet extends HttpServlet{
 			if(user != null) {
 				HttpSession session = request.getSession();
 				session.setAttribute("id", user.getId());
-				response.sendRedirect("index.jsp");
+				response.sendRedirect(from);
 			}
 			
 		} else if (path.equals("/logout.do")) {
 			// 로그아웃 처리
+			String from = request.getParameter("from");
+			from = from.substring(0,from.lastIndexOf("."))+".do";
 			System.out.println("로그아웃 처리");
 			HttpSession session = request.getSession();
 			session.removeAttribute("id");
-			response.sendRedirect("index.jsp");
-			
+			response.sendRedirect(from);
 		} else if (path.equals("/join.do")) {
 			// 회원가입 처리
 			System.out.println("회원가입 처리");
@@ -120,7 +124,21 @@ public class DispatcherServlet extends HttpServlet{
 
 			dao.insertMember(dto);
 			
-			response.sendRedirect("/index.jsp");
+			response.sendRedirect("/index.do");
+		}else if (path.equals("/cart.do")) {
+			request.getRequestDispatcher("/cart.jsp").forward(request,response);
+		}else if (path.equals("/detail.do")) {
+			// 디테일 페이지
+			System.out.println("디테일 페이지");
+			int id = Integer.parseInt(request.getParameter("id"));
+			ProductDAO dao = new ProductDAO();
+			ProductDTO dto = dao.getProdDetail(id);
+			if(dto == null) {
+				// 에러 페이지
+			}else {
+				request.setAttribute("detail", dto);
+				request.getRequestDispatcher("/detail.jsp").forward(request,response);				
+			}
 			
 		}
 	}

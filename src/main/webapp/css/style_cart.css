@@ -1,0 +1,113 @@
+@charset "UTF-8";
+
+/* 제목: 장바구니 */
+hr{
+	position:relative;
+	top: 5px;
+	width: 1400px;
+	color: #d9d9d9;
+}
+
+.cart_subj{
+	width:900px;
+	height:50px;
+	font-size: 32px;
+	text-align:center;
+	margin-bottom:20px;
+	float: left;
+}
+
+table.cart{
+	width:900px;
+	text-align: center;
+	margin:0;
+	float:left;
+    border-collapse: collapse;
+}
+
+th{
+	font-size:20px;
+	height:40px;
+	text-align: center;
+	border-top: 1px solid #c0c0c0;
+	border-bottom: 1px solid #c0c0c0;
+	padding-bottom: 5px;
+	padding-top: 5px;
+}
+
+td{
+	height:200px;
+	text-align: center;
+	font-size: 16px;
+	border-bottom: 1px solid #c0c0c0;
+}
+
+.selector{
+	width:90px;
+}
+
+
+.prod_img img{
+	width: 180px;
+	height:180px;
+}
+
+.prod_name{
+	width: 180px;
+}
+
+.prod_quantity{
+	width:90px;
+}
+
+.prod_price{
+	width:180px;
+}
+
+.cart_option{
+	width:180px;
+}
+
+.cart-option button{
+	width:150px;
+	height:30px;
+	font-size:15px;
+	margin-top:5px;
+	margin-bottom:5px;
+}
+
+table.order{
+	width:450px;
+	height: 250px;
+	text-align: center;
+	margin:0;
+	float:right;
+	border: 1px solid #c0c0c0;
+	border-radius: 8px;
+    border-collapse: collapse;
+}
+
+.order tr{
+	height:50px;
+}
+
+.order th{
+	font-size:20px;
+	height:50px;
+	text-align: center;
+	border-top: 1px solid #c0c0c0;
+	border-bottom: 1px solid #c0c0c0;
+	padding-bottom: 0px;
+	padding-top: 0px;
+	background-color: #c0c0c0;
+	color:white;
+}
+
+.order td{
+	font-size:20px;
+	height:50px;
+	text-align: center;
+	padding-bottom: 0px;
+	padding-top: 0px;
+	border-bottom: 0px;
+}

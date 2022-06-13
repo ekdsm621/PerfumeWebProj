@@ -28,7 +28,14 @@
 
             <!-- .main: 메인 카테고리 -->
             <div class="main">
-                <span class="main_cate_name">Fragrances</span>
+            <c:choose>
+            <c:when test="${param.maincate eq null }">
+                <span class="main_cate_name">FRAGRANCES</span>
+            </c:when>
+            <c:otherwise>
+                <span class="main_cate_name">${param.maincate }</span>
+            </c:otherwise>
+            </c:choose>
             </div>
 
             <!-- .sub: 서브 카테고리 -->
@@ -48,8 +55,8 @@
                 <ul>
                 <c:forEach var="prod" items="${products }" >
 	               	<li>
-	               		<a href="#"><img src="${prod.main_img }" alt=""></a>
-                        <a href="#">${prod.brand }<br>${prod.name }</a>
+	               		<a href="/detail.do?id=${prod.id }"><img src="${prod.main_img }" alt=""></a>
+                        <a href="/detail.do?id=${prod.id }">${prod.brand }<br>${prod.name }</a>
                     </li>
                 </c:forEach>
                 </ul>                
