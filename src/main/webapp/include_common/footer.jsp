@@ -21,7 +21,6 @@
 			by plain design
 		</li>
 	</ul>
-
 	<ul class="com_cs">
 		<li class="subject">C/S center</li>
 		<br>
@@ -37,7 +36,6 @@
 		<br>
 		<li>(sat/sun/holiday OFF)</li>
 	</ul>
-
 	<ul class="com_bank">
 		<li class="subject">bank account</li>
 		<br>
@@ -49,7 +47,6 @@
 		<li class="info_cont">(주)Perfumality</li>
 		<br>
 	</ul>
-
 	<ul class="com_add">
 		<li class="subject">[교환/반품 주소]</li>
 		<br>

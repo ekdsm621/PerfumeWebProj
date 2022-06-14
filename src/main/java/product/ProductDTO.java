@@ -1,5 +1,7 @@
 package product;
 
+import java.text.DecimalFormat;
+
 public class ProductDTO {
 	private int id;
 	private String name;
@@ -13,6 +15,7 @@ public class ProductDTO {
 	private String detail_img;
 	private int prod_new;
 	private int prod_best;
+	private int quantity;
 	
 	public int getId() {
 		return id;
@@ -94,7 +97,18 @@ public class ProductDTO {
 				+ ", main_img=" + main_img + ", sub_img_f=" + sub_img_f + ", sub_img_s=" + sub_img_s + ", sub_img_t="
 				+ sub_img_t + ", prod_new=" + prod_new + ", prod_best=" + prod_best + "]";
 	}
+	public int getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
 	
-	
-	
+	public String priceStr(int totalPrice) {
+		String priceStr = "";
+		DecimalFormat dc = new DecimalFormat("###,###,###,###");
+		priceStr = dc.format(totalPrice);
+		
+		return priceStr;
+	}
 }

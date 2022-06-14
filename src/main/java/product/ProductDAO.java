@@ -14,6 +14,7 @@ public class ProductDAO extends DBConnPool{
 	private final String getCateProd = "SELECT * FROM (SELECT ROWNUM RNUM, P.* FROM PRODUCT P WHERE PRODUCT_CATE = LOWER(?)) WHERE RNUM BETWEEN ? AND ?";
 	private final String totalCateProd = "SELECT COUNT(*) FROM PRODUCT WHERE PRODUCT_CATE = LOWER(?)";
 	private final String getProdDetail = "select p.product_id id, p.product_name name ,p.product_price price, d.product_sub_img_f img_f, d.product_sub_img_s img_s, d.product_sub_img_t img_t, d.product_detail_img detail from product p inner join product_detail d on p.product_id = d.product_id where p.product_id = ?";
+	private final String getCartItem = "select * from product where product_id = ?";
 	
 	public List<ProductDTO> getNewProducts(){
 		// 신상품 가져오는 메서드
@@ -124,7 +125,6 @@ public class ProductDAO extends DBConnPool{
 			pstmt.setInt(1, id);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				System.out.println("완료");
 				dto = new ProductDTO();
 				dto.setId(rs.getInt("id"));
 				dto.setName(rs.getString("name"));
@@ -138,6 +138,25 @@ public class ProductDAO extends DBConnPool{
 			e.printStackTrace();
 		}
 		
+		return dto;
+	}
+	
+	public ProductDTO getCartItem(String id) {
+		ProductDTO dto = null;
+		try {
+			pstmt = conn.prepareStatement(getCartItem);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				dto = new ProductDTO();
+				dto.setId(rs.getInt("product_id"));
+				dto.setName(rs.getString("product_name"));
+				dto.setPrice(rs.getInt("product_price"));
+				dto.setMain_img(rs.getString("product_main_img"));
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 		return dto;
 	}
 }

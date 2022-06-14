@@ -9,6 +9,16 @@
 <%@ include file="include_common/setting.jsp"%>
 <!-- maincate css -->
 <link href="css/style_cart.css" type="text/css" rel="stylesheet">
+<script type="text/javascript">
+function selectAll(selectAll)  {
+  const checkboxes 
+       = document.getElementsByName('checkedId');
+  
+  checkboxes.forEach((checkbox) => {
+    checkbox.checked = selectAll.checked;
+  })
+}
+</script>
 </head>
 <body>
 	 <!-- .box: 헤더 + 본문 -->
@@ -21,57 +31,43 @@
         	
 	        <h3 class="cart_subj">장바구니</h3>
 	        <!-- 카트 -->
+	        <form action="/actcart.do" >
 	        <table class="cart">
 	        	<tr>
-	        		<th class="selector"><input type="radio"></th>
+	        		<th class="selector"><input type="checkbox" name="checkedId" value="all" onclick='selectAll(this)'></th>
 	        		<th class="prod" colspan="2">상품명</th>
 	        		<th class="prod_quantity">수량</th>
 	        		<th class="prod_price">판매가</th>
 	        		<th class="cart_option">선택</th>
 	        	</tr>
+        		<c:if test="${cartExist eq 1 }">
+	        	<c:forEach var="item" items="${cartItem }">
 	        	<tr class="cate_prod">
 		        	<td class="selector">
-		        		<input type="radio">
+		        		<input type="checkbox" name="checkedId" value="${item.id }">
 		        	</td>
 		        	<td class="prod_img">
-		        		<img src="Images/product_img/main/diptyque_오 드 뚜왈렛 EDT_도_손.png">
+		        		<img src="${item.main_img }">
 		        	</td>
 		        	<td class="prod_name">
-		        		diptyque_오 드 뚜왈렛 EDT_도_손
+		        		${item.name }
 		        	</td>
 		        	<td class="prod_quantity">
-		        		수량
+		        		${item.quantity }
 		        	</td>
 		        	<td class="prod_price">
-		        		판매가
+		        		${item.priceStr(item.price) }
 		        	</td>
 		        	<td class="cart-option">
-						<button>삭제하기</button>
-						<button>주문하기</button>
+						<button name="act" value="delete">삭제하기</button>
+						<button name="act" value="order">주문하기</button>
 					</td>
 	        	</tr>
-	        	<tr class="cate_prod">
-		        	<td class="selector">
-		        		<input type="radio">
-		        	</td>
-		        	<td class="prod_img">
-		        		<img src="Images/product_img/main/diptyque_오 드 뚜왈렛 EDT_도_손.png">
-		        	</td>
-		        	<td class="prod_name">
-		        		diptyque_오 드 뚜왈렛 EDT_도_손
-		        	</td>
-		        	<td class="prod_quantity">
-		        		수량
-		        	</td>
-		        	<td class="prod_price">
-		        		판매가
-		        	</td>
-		        	<td class="cart-option">
-						<button>삭제하기</button>
-						<button>주문하기</button>
-					</td>
-	        	</tr>
+	        	</c:forEach>
+        		</c:if>
 	        </table>
+	        </form>
+	        
 
 	        <table class="order">
 	        	<tr>
@@ -80,15 +76,24 @@
 	        	
 	        	<tr>
 	        		<td>총 금액</td>
-	        		<td>xxxxxx</td>
+	        		<td>${totalPriceStr }</td>
 	        	</tr>
 	        	<tr>
 	        		<td>배송비</td>
-	        		<td>xxxxxx</td>
+	        		<td>
+	        		<c:choose>
+	        		<c:when test="${cartExist eq 1 }">
+	        		2,500
+	        		</c:when>
+	        		<c:otherwise>
+	        		0
+	        		</c:otherwise>
+	        		</c:choose>
+	        		</td>
 	        	</tr>
 	        	<tr>
 	        		<td>총 결제금액</td>
-	        		<td>xxxxxx</td>
+	        		<td>${totalPriceWithShipStr }</td>
 	        	</tr>
 	        	<tr>
 	        		<th colspan="2">주문 하기</th>

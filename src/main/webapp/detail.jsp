@@ -26,10 +26,11 @@
                 <div class="prod_info">
                     <h2>${detail.name }</h2>
                     <hr>
+                    <form action="/order.do?id=${detail.id }" method="post">
                     <table>
                         <tr>
                             <th>판매가</th>
-                            <td>${detail.price }</td>
+                            <td>${price }</td>
                         </tr>
                         <tr>
                             <th>배송비</th>
@@ -57,14 +58,15 @@
                         <tr><td></td><td></td></tr>
                         <tr>
                             <th>총 상품금액</th>
-                            <td>${(detail.price + 2500) }</td>
+                            <td>${totalPrice }</td>
                         </tr>
                         <tr><td></td><td></td></tr>
                         <tr>
-                        	<td style="text-align:center"><button>장바구니</button></td>
+                        	<td style="text-align:center"><button type="button" onClick="location.href='/setcart.do?id=${detail.id }'">장바구니</button></td>
                         	<td style="text-align:center"><button>주문하기</button></td>
                         </tr>
                     </table>
+                    </form>
                 </div>
             </div>
             <hr>

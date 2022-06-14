@@ -160,3 +160,6 @@ create table product_detail(
 
 insert into product_detail(product_id,product_sub_img_f,product_sub_img_s,product_sub_img_t,product_detail_img)
 values(6, 'Images/product_img/sub/prod_img1.png','Images/product_img/sub/prod_img2.png','Images/product_img/sub/prod_img3.png', 'Images/product_img/detail/998c9866d03e515a5789ea523db11542.jpg');
+
+insert into product_detail(product_id,product_sub_img_f,product_sub_img_s,product_sub_img_t,product_detail_img)
+values(2, 'Images/product_img/sub/ºÒ¸®_¿À_¶ß¸®»Ü_1.jpg','Images/product_img/sub/ºÒ¸®_¿À_¶ß¸®»Ü_3.png','Images/product_img/sub/ºÒ¸®_¿À_¶ß¸®»Ü_2.jpg', 'Images/product_img/detail/Buly-1803-Le-MusC3A9e-du-Louvre-La-Baigneuse_D.jpg');

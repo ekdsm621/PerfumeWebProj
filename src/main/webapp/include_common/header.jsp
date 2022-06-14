@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div id="header">
 	<!-- .header_top: 로고 + 로그인 -->
@@ -15,14 +14,12 @@
 			<!-- .login: 누르면 로그인창 띄움 -->
 			<a class="login"><img src="Images/member.png"></a>
 			<ul>
-				
 				<%if(session.getAttribute("id") != null){
 				String from = request.getRequestURI();%>
 				<li><a href="/logout.do?from=<%=from %>">Logout</a></li>
 				<%}else{%>
 				<li><a class="login">Login</a></li>
 				<%} %>
-				
 				<li><a href="join.jsp">Join</a></li>
 				<li><a href="/cart.do">Cart</a></li>
 			</ul>

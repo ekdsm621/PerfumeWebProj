@@ -1,18 +1,23 @@
 package common;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.jsp.JspWriter;
 
 import category.CategoryDAO;
-import category.CategoryDTO;
 import member.MemberDAO;
 import member.MemberDTO;
 import product.ProductDAO;
@@ -40,12 +45,13 @@ public class DispatcherServlet extends HttpServlet{
 		
 		if(path.equals("/index.do")) {
 			// 인덱스 페이지에 필요한 데이터 실어서 index.jsp로 보내기
-			System.out.println("인덱스 페이지");
+			ProductDAO dao = new ProductDAO();
+			
 			List<ProductDTO> newProducts = new ArrayList<ProductDTO>();
 			List<ProductDTO> bestProducts = new ArrayList<ProductDTO>();
-			ProductDAO dao = new ProductDAO();
 			newProducts = dao.getNewProducts();
 			bestProducts = dao.getBestProducts();
+			
 			request.setAttribute("newProducts", newProducts);
 			request.setAttribute("bestProducts", bestProducts);
 			request.getRequestDispatcher("/index.jsp").forward(request,response);
@@ -86,6 +92,7 @@ public class DispatcherServlet extends HttpServlet{
 				HttpSession session = request.getSession();
 				session.setAttribute("id", user.getId());
 				response.sendRedirect(from);
+			}else {
 			}
 			
 		} else if (path.equals("/logout.do")) {
@@ -125,21 +132,118 @@ public class DispatcherServlet extends HttpServlet{
 			dao.insertMember(dto);
 			
 			response.sendRedirect("/index.do");
+			
+		}else if (path.equals("/setcart.do")) {
+			// 카트에 담기
+			String id = request.getParameter("id");
+			// id, 갯수로 구성
+			Map<String, Integer> cart = null;
+			HttpSession session = request.getSession();
+			
+			if(session.getAttribute("cart") != null) {
+				// 카트가 존재하는 경우
+				cart = (Map<String, Integer>) session.getAttribute("cart");
+				Set<String> cartIds = cart.keySet();
+				boolean exist = false;
+				for(String cartId:cartIds) {
+					// 카트 내 동일 상품이 있는지 검색
+					if(cartId.equals(id)) {
+						exist = true;
+						break;
+					}
+				}
+				if(exist) {
+					// 존재하는 경우 -> 동일한 아이템이 장바구니에 존재 -> 갯수 ++
+					int cartCount = cart.get(id);
+					cartCount ++;
+					cart.replace(id,cartCount);
+				}else {
+					// 카트에 존재하지 않는 경우
+					cart.put(id,1);
+				}
+			}else {
+				// 카트가 존재하지 않는 경우
+				cart = new HashMap<>();
+				cart.put(id, 1);
+				session.setAttribute("cart", cart);				
+			}
+			response.sendRedirect("/detail.do?id="+id);
+			
+		}else if (path.equals("/actcart.do")) {
+			HttpSession session = request.getSession();
+			// delete 또는 order 처리
+			if(request.getParameter("act") != null && request.getParameter("checkedId") != null) {
+				String act = request.getParameter("act");
+				String[] ids = request.getParameterValues("checkedId");
+				if(act.equals("delete")) {
+					// delete 요청
+					session.removeAttribute("");
+					Map<String, Integer> cart = (Map<String, Integer>) session.getAttribute("cart");
+					for(String id:ids) {
+						cart.remove(id);						
+					}
+					if(cart.size() == 0) {
+						cart = null;
+					}
+					session.setAttribute("cart", cart);
+					response.sendRedirect("/cart.do");
+				}else {
+					// order 요청
+				}
+			}
 		}else if (path.equals("/cart.do")) {
+			HttpSession session = request.getSession();
+			
+			// 카트 페이지 띄우기
+			if(session.getAttribute("cart") != null) {
+				// 장바구니에 아이템 있는 경우
+				Map<String, Integer> cart = (Map<String, Integer>) session.getAttribute("cart");
+				Set<String> cartIds = cart.keySet();
+				
+				// 카트 페이지에 넘겨줄 변수 
+				List<ProductDTO> cartItem = new ArrayList<>();
+				int totalPrice = 0;
+				ProductDTO item = null;
+				
+				ProductDAO dao = new ProductDAO();
+				for(String cartId:cartIds) {
+					item = dao.getCartItem(cartId);
+					item.setQuantity(cart.get(cartId));
+					cartItem.add(item);
+					totalPrice += item.getPrice() * item.getQuantity();
+				}
+				request.setAttribute("cartExist", 1);
+				request.setAttribute("cartItem", cartItem);
+				request.setAttribute("totalPriceStr", item.priceStr(totalPrice));
+				request.setAttribute("totalPriceWithShipStr", item.priceStr(totalPrice+2500));
+			}else {
+				// 장바구니에 아이템 없는 경우
+				request.setAttribute("cartExist", "-1");
+			}
 			request.getRequestDispatcher("/cart.jsp").forward(request,response);
+			
 		}else if (path.equals("/detail.do")) {
 			// 디테일 페이지
 			System.out.println("디테일 페이지");
 			int id = Integer.parseInt(request.getParameter("id"));
 			ProductDAO dao = new ProductDAO();
 			ProductDTO dto = dao.getProdDetail(id);
+			DecimalFormat dc = new DecimalFormat("###,###,###,###");
+			String price = dc.format(dto.getPrice());
+			String totalPrice = dc.format(dto.getPrice()+2500);
 			if(dto == null) {
 				// 에러 페이지
 			}else {
+				request.setAttribute("totalPrice", totalPrice);
+				request.setAttribute("price", price);
 				request.setAttribute("detail", dto);
 				request.getRequestDispatcher("/detail.jsp").forward(request,response);				
 			}
 			
 		}
+	}
+	
+	public void removeCart() {
+		
 	}
 }
