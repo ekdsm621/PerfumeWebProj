@@ -39,12 +39,12 @@
                 </ul>
             </div>
         </div>
+    <!-- 푸터 -->
+    <%@ include file="include_common/footer.jsp"%>
     </div>
 
     <!-- .layer: .login 누르면 뜨는 로그인창 -->
     <%@ include file="include_common/loginPopup.jsp"%>
 
-    <!-- 푸터 -->
-    <%@ include file="include_common/footer.jsp"%>
 </body>
 </html>

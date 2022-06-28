@@ -50,5 +50,33 @@ jQuery(document).ready(function(){
              // #modal의 'active'클래스를 삭제함
             $("#layer").removeClass("active");
          });
+        
+      $("#loginBtn").click(function(){
+			if($("#id").val()){
+				var query = {id:$("#id").val(), password:$("#password").val()};
+				$.ajax({
+					type:"post",
+					url:"login_process.jsp",
+					data: query,
+					success:function(data){
+						if(data == 1){
+							location.reload();
+						}else if(data == 0){
+							alert("아이디 또는 패스워드가 일치하지 않습니다");
+							$(".loginMsg").addClass("active");
+						}
+					}
+				})
+			}
+		});
+      $("#logoutBtn").click(function(){
+			$.ajax({
+				type:"post",
+				url:"logout_process.jsp",
+				success:function(){
+						location.reload();
+						}
+			})
+		});
 
 });

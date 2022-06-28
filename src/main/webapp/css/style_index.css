@@ -23,7 +23,7 @@ body{
 
 #box{
     width: 1400px;
-    height: 2000px;
+    height: auto;
     position: relative;
 }
 
@@ -70,7 +70,7 @@ body{
     margin: 15px;
 }
 
-.member>a{ /* 이미지 */
+.member>a{ /* �씠誘몄� */
     margin-top: 7px;
     float: right;
 }
@@ -115,7 +115,7 @@ body{
 /* content */
 #content{
     width: 1400px;
-    height: 2500px;
+    height: auto;
     position: relative;
     top: 250px;
     float: left;
@@ -208,9 +208,9 @@ h3{
     margin-bottom: 15px;
 }
 
-#layer{      /*레이어 팝업창 배경 스타일*/
+#layer{      
 	width:100%;
-	height:2000px;
+	height:5000px;
 	position:absolute;
 	left:0px;
 	top:0px;
@@ -223,16 +223,16 @@ h3{
 	display:block;
 }
 
-.layer_up{   /*레이어 팝업창 스타일*/
+.layer_up{   
 	width:500px;
-	height:530px;
+	height:500px;
 	position:fixed;
 	left:37%; 
 	top:20%; 
 	background-color:#ffffff;
 }
 
-.uptitle{  /* 로그인창 제목 */
+.uptitle{  
 	margin-top:40px;
     margin-bottom: 20px;
 	text-align:center; 
@@ -333,8 +333,6 @@ button:hover{
 	font-size:15px;
 	font-weight:bold;
 	background:#dddddd;
-        /* border-radius:3px; 테두리를 둥글게 만들어 모서리가 둥근 버튼으로 지정함.
-            큰 값일수록 원형에 가까워짐 */
 	border-radius:4px;
 	position:absolute; 
 	right:10px;
@@ -348,56 +346,50 @@ button:hover{
 
 #footer{
     width:100%;
-    height: 300px;
+    height: 250px;
     background-color: rgba(0, 0, 0, 0.08);
     position: relative;
     float: left;
-    bottom: 0;
+    margin-top: 300px;
 }
 
 .com_info{
-    width: 300px;
-    height: 100%;
+    width: 25%;
+    height: 80%;
     font-size: 14px;
     float: left;
-    margin-left: 100px;
-    margin-right: 100px;
+    margin-left: 5%;
     margin-top: 50px;
 }
 
 .com_cs{
-    width: 250px;
-    height: 100%;
+    width: 25%;
+    height: 80%;
     font-size: 14px;
     float: left;
-    margin-left: 100px;
-    margin-right: 100px;
     margin-top: 50px;
 }
 
 .com_bank{
-    width: 250px;
-    height: 100%;
+    width: 25%;
+    height: 80%;
     font-size: 14px;
     float: left;
-    margin-left:80px;
-    margin-right: 80px;
     margin-top: 50px;
 }
 
 .com_add{
-    width: 200px;
-    height: 100%;
+    width: 20%;
+    height: 80%;
     font-size: 14px;
     float: left;
-    margin-left: 80px;
-    margin-right: 80px;
     margin-top: 50px;
 }
 
 .subject{
     display: inline-block;
     width: 100px;
+    
 }
 
 .info_cont{

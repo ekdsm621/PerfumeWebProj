@@ -9,5 +9,5 @@
   
   int check= dao.confirmID(id);
   
-  out.println(check);//처리 결과를 register.js로 리턴
+  out.println(check);
  %>

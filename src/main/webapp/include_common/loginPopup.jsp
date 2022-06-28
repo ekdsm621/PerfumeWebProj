@@ -6,8 +6,7 @@
 		<div class="uptitle">LOGIN</div>
 		<div class="upbody">
 			
-			<%String from = request.getRequestURI(); %>
-			<form action="/login.do?from=<%=from %>" class="login_box" method="post">
+			<form action="" class="login_box" method="post">
 				<div class="user">
 					<label for="id">User</label>
 					<input type="text" id="id" name="id">
@@ -16,7 +15,7 @@
 					<label for="password">Password</label>
 					<input type="password" id="password" name="pw">
 				</div>
-				<button type="submit">로그인</button>
+				<button type="button" id="loginBtn">로그인</button>
 			</form>
 			<div class="find">
 				<a href="#">비밀번호 찾기</a> <a href="#">아이디 찾기</a> <a href="join.jsp">회원가입</a>

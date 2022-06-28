@@ -2,7 +2,7 @@
 /* content */
 .content{
     width: 1400px;
-    height: 2500px;
+    height: auto;
     position: relative;
     top: 150px;
     float: left;
@@ -74,7 +74,7 @@ select:hover{
 /* 蹂몃Ц �궡�슜 (�젣�뭹 �긽�꽭 �꽕紐�) */
 .cont_body{
     width: 950px;
-    height: 1500px;
+    height: auto;
     position:relative;
 }
 
@@ -91,6 +91,4 @@ hr{
 }
 
 #footer{
-    position: absolute;
-    top: 5800px;
 }

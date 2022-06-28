@@ -78,7 +78,7 @@
         </div>
      </div>
      
-    <%@ include file="include_common/loginPopup.jsp"%>
     <%@ include file="include_common/footer.jsp"%>
+    <%@ include file="include_common/loginPopup.jsp"%>
 </body>
 </html>

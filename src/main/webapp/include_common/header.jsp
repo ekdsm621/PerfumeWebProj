@@ -16,7 +16,7 @@
 			<ul>
 				<%if(session.getAttribute("id") != null){
 				String from = request.getRequestURI();%>
-				<li><a href="/logout.do?from=<%=from %>">Logout</a></li>
+				<li><a href="" id="logoutBtn">Logout</a></li>
 				<%}else{%>
 				<li><a class="login">Login</a></li>
 				<%} %>

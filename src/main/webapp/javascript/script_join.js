@@ -26,7 +26,7 @@ $(document).ready(function(){
      
      // 아이디 중복확인
      	$("#checkId").click(function(){
-	  if($("#id").val()){
+	  	if($("#id").val()){
 		var query = {id:$("#id").val()};
 		
 	    $.ajax({
