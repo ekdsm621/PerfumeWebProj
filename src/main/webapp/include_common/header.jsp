@@ -5,7 +5,7 @@
 	<div class="header_top">
 		<!-- .logo: 로고 -->
 		<div class="logo">
-			<a href="/index.do">
+			<a href="/home.do">
 				<h2>Perfumality</h2>
 			</a>
 		</div>
@@ -19,8 +19,8 @@
 				<li><a href="" id="logoutBtn">Logout</a></li>
 				<%}else{%>
 				<li><a class="login">Login</a></li>
-				<%} %>
 				<li><a href="join.jsp">Join</a></li>
+				<%} %>
 				<li><a href="/cart.do">Cart</a></li>
 			</ul>
 		</div>

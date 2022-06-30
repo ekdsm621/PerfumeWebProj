@@ -48,7 +48,7 @@ public class JoinController extends HttpServlet {
 
 		dao.insertMember(dto);
 
-		response.sendRedirect("/index.do");
+		response.sendRedirect("/home.do");
 
 	}
 }

@@ -15,7 +15,7 @@ import category.CategoryDAO;
 import product.ProductDAO;
 import product.ProductDTO;
 
-@WebServlet("/index.do")
+@WebServlet("/home.do")
 public class HomeController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,6 +28,6 @@ public class HomeController extends HttpServlet{
 		
 		request.setAttribute("newProducts", newProducts);
 		request.setAttribute("bestProducts", bestProducts);
-		request.getRequestDispatcher("/index.jsp").forward(request,response);
+		request.getRequestDispatcher("/home.jsp").forward(request,response);
 	}
 }

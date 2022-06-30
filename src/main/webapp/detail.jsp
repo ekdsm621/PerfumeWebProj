@@ -7,6 +7,9 @@
 <title>Detail</title>
 <%@ include file="include_common/setting.jsp"%>
 <link rel="stylesheet" href="css/style_detail.css" type="text/css">
+<script>
+ 
+</script>
 </head>
 <body>
 	
@@ -37,23 +40,12 @@
                             <td>2,500</td>
                         </tr>
                         <tr>
-                            <th>옵션 선택 </th>
+                            <th>수량 </th>
                             <td>
-                                <select>
-                                    <option>
-                                        ---- Select Option ----
-                                    </option>
-                                    <option value="">
-                                        Option 1
-                                    </option>
-                                    <option value="">
-                                        Option 2
-                                    </option>
-                                    <option value="">
-                                        Option 3
-                                    </option>
-                                </select>
-                            </td>
+                            	<button type="button" onClick="javascript:this.form.amount.value++;"> + </button>
+                            	<input type=text name=amount value=1> 
+                            	<button type="button" onClick="javascript:this.form.amount.value--;"> - </button> 
+	                        </td>
                         </tr>
                         <tr><td></td><td></td></tr>
                         <tr>

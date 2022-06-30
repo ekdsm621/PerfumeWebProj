@@ -46,6 +46,17 @@ $(document).ready(function(){
 		  $("#id").focus();
 	  }
 	});
-    
+	
+	$('#email_behind_sel').change(function(){ 
+		$("#email_behind_sel option:selected").each(function(){
+			if($(this).val()== '1') {
+				$("#email_self").val('');
+				$("#email_self").attr("readonly",false);
+			} else { 
+				$("#email_self").val($(this).text()); 
+				$("#email_self").attr("readonly",true);
+			}
+		});
+    });
 });
 

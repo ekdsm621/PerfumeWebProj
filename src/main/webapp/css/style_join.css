@@ -96,8 +96,17 @@ input[type="checkbox"]{
     margin-left: 15px;
 }
 
-#add_num{
+#sample6_postcode{
     width: 340px;
+}
+
+#sample6_detailAddress{
+	width: 243px;
+	margin-top:10px;
+}
+
+#sample6_extraAddress{
+	width:180px;
 }
 
 input[type="button"]{

@@ -16,7 +16,10 @@ public class ProductDAO extends DBConnPool{
 	private final String getProdDetail = "select p.product_id id, p.product_name name ,p.product_price price, d.product_sub_img_f img_f, d.product_sub_img_s img_s, d.product_sub_img_t img_t, d.product_detail_img detail from product p inner join product_detail d on p.product_id = d.product_id where p.product_id = ?";
 	private final String getCartItem = "select * from product where product_id = ?";
 	private final String insertProd = "insert into product "
-			+ "values((select nvl(max(product_id),0)+1 from product), ?,?,?,?,?,?,?,?,?,?";
+			+ "values((select nvl(max(product_id), 0) + 1 from product), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	private final String insertProdDetail = "insert into product_detail(product_id,product_sub_img_f,product_sub_img_s,product_sub_img_t,product_detail_img)"
+			+" values((select nvl(max(product_id), 0) from product), ?, ?, ?, ?)";
+
 	
 	public List<ProductDTO> getNewProducts(){
 		// 신상품 가져오는 메서드
@@ -136,6 +139,7 @@ public class ProductDAO extends DBConnPool{
 				dto.setSub_img_t(rs.getNString("img_t"));
 				dto.setDetail_img(rs.getString("detail"));
 			}
+			System.out.println(dto.getId());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -160,5 +164,38 @@ public class ProductDAO extends DBConnPool{
 			e.printStackTrace();
 		}
 		return dto;
+	}
+	
+	public void insertProduct(ProductDTO dto) {
+		try {
+			pstmt = conn.prepareStatement(insertProd);
+			pstmt.setString(1, dto.getName());
+			pstmt.setString(2, dto.getBrand());
+			pstmt.setString(3, dto.getCate());
+			pstmt.setInt(4, dto.getPrice());
+			pstmt.setString(5, dto.getMain_img());
+			pstmt.setString(6, "");
+			pstmt.setString(7, "");
+			pstmt.setString(8, "");
+			pstmt.setInt(9, dto.getProd_new());
+			pstmt.setInt(10, dto.getProd_best());
+			pstmt.executeQuery();
+			conn.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public void insertProductDetail(ProductDTO dto) {
+		try {
+			pstmt = conn.prepareStatement(insertProdDetail);
+			pstmt.setString(1, dto.getSub_img_f());
+			pstmt.setString(2, dto.getSub_img_s());
+			pstmt.setString(3, dto.getSub_img_t());
+			pstmt.setString(4, dto.getDetail_img());
+			pstmt.executeQuery();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 }

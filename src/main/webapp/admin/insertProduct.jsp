@@ -24,11 +24,11 @@
 					<td>카테고리: </td>
 					<td>
 						<select name="product_cate">
-							<option value="FRAGRANCES">FRAGRANCES</option>
-							<option value="SKIN CARE">SKIN CARE</option>
-							<option value="BODY & HAND">BODY & HAND</option>
-							<option value="HOME">HOME</option>
-							<option value="ACC">ACC</option>
+							<option value="fragrances">FRAGRANCES</option>
+							<option value="skin care">SKIN CARE</option>
+							<option value="body & hand">BODY & HAND</option>
+							<option value="home">HOME</option>
+							<option value="acc">ACC</option>
 						</select>
 					</td>
 				</tr>
@@ -37,15 +37,19 @@
 					<td><input type="text" name="product_price"></td>
 				</tr>
 				<tr>
-					<td>상품 이미지: </td>
+					<td>메인 상품 이미지: </td>
+					<td><input type="file" name="product_main"></td>
+				</tr>
+				<tr>
+					<td>상품 이미지1: </td>
 					<td><input type="file" name="product_sub_img_f"></td>
 				</tr>
 				<tr>
-					<td>상품 이미지: </td>
+					<td>상품 이미지2: </td>
 					<td><input type="file" name="product_sub_img_s"></td>
 				</tr>
 				<tr>
-					<td>상품 이미지: </td>
+					<td>상품 이미지3: </td>
 					<td><input type="file" name="product_sub_img_t"></td>
 				</tr>
 				<tr>
