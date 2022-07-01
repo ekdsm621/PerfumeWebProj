@@ -9,6 +9,7 @@
 </head>
 <body>
 	관리자 페이지
+	<a href="/admin/productList.do"><button>상품 목록으로 가기</button></a>
 	<button>상품 등록하기</button>
 </body>
 </html>

@@ -13,12 +13,14 @@ public class ProductDAO extends DBConnPool{
 	private final String getBestProd = "SELECT * FROM PRODUCT WHERE PRODUCT_BEST = 1";
 	private final String getCateProd = "SELECT * FROM (SELECT ROWNUM RNUM, P.* FROM PRODUCT P WHERE PRODUCT_CATE = LOWER(?)) WHERE RNUM BETWEEN ? AND ?";
 	private final String totalCateProd = "SELECT COUNT(*) FROM PRODUCT WHERE PRODUCT_CATE = LOWER(?)";
-	private final String getProdDetail = "select p.product_id id, p.product_name name ,p.product_price price, d.product_sub_img_f img_f, d.product_sub_img_s img_s, d.product_sub_img_t img_t, d.product_detail_img detail from product p inner join product_detail d on p.product_id = d.product_id where p.product_id = ?";
-	private final String getCartItem = "select * from product where product_id = ?";
-	private final String insertProd = "insert into product "
-			+ "values((select nvl(max(product_id), 0) + 1 from product), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-	private final String insertProdDetail = "insert into product_detail(product_id,product_sub_img_f,product_sub_img_s,product_sub_img_t,product_detail_img)"
-			+" values((select nvl(max(product_id), 0) from product), ?, ?, ?, ?)";
+	private final String getProdDetail = "SELECT P.PRODUCT_ID ID, P.PRODUCT_NAME NAME ,P.PRODUCT_PRICE PRICE, D.PRODUCT_SUB_IMG_F IMG_F, D.PRODUCT_SUB_IMG_S IMG_S, D.PRODUCT_SUB_IMG_T IMG_T, D.PRODUCT_DETAIL_IMG DETAIL FROM PRODUCT P INNER JOIN PRODUCT_DETAIL D ON P.PRODUCT_ID = D.PRODUCT_ID WHERE P.PRODUCT_ID = ?";
+	private final String getCartItem = "SELECT * FROM PRODUCT WHERE PRODUCT_ID = ?";
+	private final String insertProd = "INSERT INTO PRODUCT "
+			+ "VALUES((SELECT NVL(MAX(PRODUCT_ID), 0) + 1 FROM PRODUCT), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	private final String insertProdDetail = "INSERT INTO PRODUCT_DETAIL(PRODUCT_ID,PRODUCT_SUB_IMG_F,PRODUCT_SUB_IMG_S,PRODUCT_SUB_IMG_T,PRODUCT_DETAIL_IMG)"
+			+" VALUES((SELECT NVL(MAX(PRODUCT_ID), 0) FROM PRODUCT), ?, ?, ?, ?)";
+	private final String getProductList = "SELECT * FROM PRODUCT";
+	private final String deleteProduct = "DELETE PRODUCT WHERE PRODUCT_ID=?";
 
 	
 	public List<ProductDTO> getNewProducts(){
@@ -185,6 +187,7 @@ public class ProductDAO extends DBConnPool{
 			e.printStackTrace();
 		}
 	}
+	
 	public void insertProductDetail(ProductDTO dto) {
 		try {
 			pstmt = conn.prepareStatement(insertProdDetail);
@@ -197,5 +200,36 @@ public class ProductDAO extends DBConnPool{
 			e.printStackTrace();
 		}
 		
+	}
+	public List<ProductDTO> getProductList() {
+		List<ProductDTO> products = new ArrayList<>();
+		try {
+			pstmt = conn.prepareStatement(getProductList);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				ProductDTO product = new ProductDTO();
+				product.setId(rs.getInt("product_id"));
+				product.setName(rs.getString("product_name"));
+				product.setBrand(rs.getString("product_brand"));
+				product.setCate(rs.getString("product_cate"));
+				product.setPrice(rs.getInt("product_price"));
+				product.setProd_new(rs.getInt("product_new"));
+				product.setProd_best(rs.getInt("product_best"));
+				products.add(product);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return products;
+		
+	}
+	public void deleteProduct(String id) {
+		try {
+			pstmt = conn.prepareStatement(deleteProduct);
+			pstmt.setInt(1, Integer.parseInt(id));
+			pstmt.executeQuery();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

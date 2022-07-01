@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Perfumality</title>
+<%@ include file="include_common/setting.jsp"%>
 </head>
 <body>
 	<div align="center">

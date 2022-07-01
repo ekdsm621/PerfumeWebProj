@@ -7,9 +7,7 @@
 <title>Detail</title>
 <%@ include file="include_common/setting.jsp"%>
 <link rel="stylesheet" href="css/style_detail.css" type="text/css">
-<script>
- 
-</script>
+<script src="javascript/script_detail.js" defer type="text/javascript"></script>
 </head>
 <body>
 	
@@ -42,9 +40,10 @@
                         <tr>
                             <th>수량 </th>
                             <td>
-                            	<button type="button" onClick="javascript:this.form.amount.value++;"> + </button>
-                            	<input type=text name=amount value=1> 
-                            	<button type="button" onClick="javascript:this.form.amount.value--;"> - </button> 
+                            	<button type="button" class="cntBtn" id="minus"> - </button> 
+                            	<input type=text class="cntInput" id="amount" name="amount" value="1"> 
+                            	<input type="hidden" id="id" value="${detail.id }">
+                            	<button type="button" class="cntBtn" id="plus" onClick="javascript:this.form.amount.value++;"> + </button>
 	                        </td>
                         </tr>
                         <tr><td></td><td></td></tr>
@@ -54,7 +53,7 @@
                         </tr>
                         <tr><td></td><td></td></tr>
                         <tr>
-                        	<td style="text-align:center"><button type="button" onClick="location.href='/setcart.do?id=${detail.id }'">장바구니</button></td>
+                        	<td style="text-align:center"><button type="button" id="cart" >장바구니</button></td>
                         	<td style="text-align:center"><button>주문하기</button></td>
                         </tr>
                     </table>

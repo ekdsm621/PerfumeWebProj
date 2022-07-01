@@ -58,6 +58,19 @@
     text-align: left;
 }
 
+.cntBtn {
+	width:50px;
+}
+
+.cntInput{
+    width: 30px;
+    text-align:center;
+    border: rgb(204, 204, 204) 1px solid;
+    border-radius: 0.5em;
+    padding: 10px;
+    font-size: 17px;
+}
+
 select{
     width: 200px;
     height: 30px;

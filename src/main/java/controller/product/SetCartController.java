@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.jsp.JspWriter;
 
 @WebServlet("/setcart.do")
 public class SetCartController extends HttpServlet {
@@ -19,6 +20,7 @@ public class SetCartController extends HttpServlet {
 			throws ServletException, IOException {
 		// 카트에 담기
 		String id = request.getParameter("id");
+		int amount = Integer.parseInt(request.getParameter("amount"));
 		// id, 갯수로 구성
 		Map<String, Integer> cart = null;
 		HttpSession session = request.getSession();
@@ -38,19 +40,22 @@ public class SetCartController extends HttpServlet {
 			if (exist) {
 				// 존재하는 경우 -> 동일한 아이템이 장바구니에 존재 -> 갯수 ++
 				int cartCount = cart.get(id);
-				cartCount++;
+				cartCount += amount;
 				cart.replace(id, cartCount);
 			} else {
 				// 카트에 존재하지 않는 경우
-				cart.put(id, 1);
+				cart.put(id, amount);
 			}
 		} else {
 			// 카트가 존재하지 않는 경우
 			cart = new HashMap<>();
-			cart.put(id, 1);
+			cart.put(id, amount);
 			session.setAttribute("cart", cart);
 		}
-		response.sendRedirect("/detail.do?id=" + id);
+		
+		response.getWriter().println(1);
+
+//		response.sendRedirect("/detail.do?id=" + id);
 
 	}
 }
